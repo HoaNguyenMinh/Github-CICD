@@ -1,0 +1,83 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://soap.jee.hnguyen.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ScoreServiceService" targetNamespace="http://soap.jee.hnguyen.com/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soap.jee.hnguyen.com/" elementFormDefault="unqualified" targetNamespace="http://soap.jee.hnguyen.com/" version="1.0">
+<xs:element name="getScore" type="tns:getScore"/>
+<xs:element name="getScoreResponse" type="tns:getScoreResponse"/>
+<xs:element name="updateScore" type="tns:updateScore"/>
+<xs:element name="updateScoreResponse" type="tns:updateScoreResponse"/>
+<xs:complexType name="getScore">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getScoreResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:score"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="score">
+<xs:sequence>
+<xs:element name="wins" type="xs:int"/>
+<xs:element name="losses" type="xs:int"/>
+<xs:element name="ties" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateScore">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int"/>
+<xs:element name="arg1" type="xs:int"/>
+<xs:element name="arg2" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="updateScoreResponse">
+<xs:sequence/>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="updateScoreResponse">
+<wsdl:part element="tns:updateScoreResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getScoreResponse">
+<wsdl:part element="tns:getScoreResponse" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getScore">
+<wsdl:part element="tns:getScore" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="updateScore">
+<wsdl:part element="tns:updateScore" name="parameters"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="ScoreService">
+<wsdl:operation name="getScore">
+<wsdl:input message="tns:getScore" name="getScore"> </wsdl:input>
+<wsdl:output message="tns:getScoreResponse" name="getScoreResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="updateScore">
+<wsdl:input message="tns:updateScore" name="updateScore"> </wsdl:input>
+<wsdl:output message="tns:updateScoreResponse" name="updateScoreResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ScoreServiceServiceSoapBinding" type="tns:ScoreService">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getScore">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getScore">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getScoreResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="updateScore">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="updateScore">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="updateScoreResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ScoreServiceService">
+<wsdl:port binding="tns:ScoreServiceServiceSoapBinding" name="ScoreServicePort">
+<soap:address location="http://localhost:8080/jee-platform-wildfly/ScoreService"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
