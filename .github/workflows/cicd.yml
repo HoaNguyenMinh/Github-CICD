@@ -23,6 +23,5 @@ jobs:
       # Runs a multi-line command using the runners shell
       - name: jee wildfly Build
         run: |
-          cd /home/hnguyen/Dokumente/DEV/jee-platform-wildfly
+          cd jee-platform-wildfly
           ./mvnw clean package wildfly:run
-
