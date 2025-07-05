@@ -24,4 +24,5 @@ jobs:
       - name: jee wildfly Build
         run: |
           cd /home/hnguyen/Dokumente/DEV/jee-platform-wildfly
-          mvn clean package wildfly:run
+          ./mvnw clean package wildfly:run
+
